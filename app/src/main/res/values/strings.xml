@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PrimeMovies</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="play">Play</string>
+    <string name="todo">TODO</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="popular_tv_show">Popular Tv Show</string>
+    <string name="anime">Anime</string>
+    <string name="jurssic_world_dominion">Jurssic world dominion</string>
+    <string name="cast_detail">Cast Detail</string>
+    <string name="retry">Retry</string>
+</resources>

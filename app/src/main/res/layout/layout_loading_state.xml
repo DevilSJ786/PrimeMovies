@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_100sdp"
+    android:layout_height="@dimen/_140sdp"
+    android:padding="@dimen/_16sdp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/retry_button"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/dark_gray"
+        android:text="@string/retry"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</RelativeLayout>

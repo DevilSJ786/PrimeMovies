@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bsd_bg"
+    android:paddingHorizontal="@dimen/_10sdp"
+    android:paddingTop="@dimen/_10sdp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_156sdp"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    app:cardCornerRadius="@dimen/_16sdp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/poster_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/poster_bg"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/close_detail_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:foreground="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_close" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:background="@drawable/rating_bg"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_8sdp"
+                        android:paddingVertical="@dimen/_2sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_14sdp"
+                            android:layout_height="@dimen/_14sdp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_rated_star"
+                            app:tint="@android:color/holo_red_dark"
+                            android:contentDescription="@string/todo" />
+
+                        <TextView
+                            android:id="@+id/rating_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:gravity="center"
+                            android:textColor="@color/text_primary"
+                            tools:text="7.8" />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_76sdp"
+                    android:layout_alignBottom="@id/card"
+                    android:background="@drawable/gradient_bottom_dark_grey"
+                    android:translationZ="@dimen/_100sdp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-30dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_16ssp"
+                        tools:text="Batman v Superman: Dawn of Justice" />
+
+                </RelativeLayout>
+
+
+
+                <TextView
+                    android:id="@+id/release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/_10ssp"
+                    tools:text="2022" />
+
+                <TextView
+                    android:id="@+id/overview_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_13ssp"
+                    tools:text="In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages." />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/play_button"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:backgroundTint="@color/white"
+                android:text="@string/play"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_play_circle_outline"
+                app:iconGravity="textStart"
+                app:iconTint="@color/black" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
