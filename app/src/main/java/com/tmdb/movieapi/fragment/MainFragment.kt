@@ -6,13 +6,13 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -75,11 +75,14 @@ class MainFragment : Fragment() {
         pagingAdapter = PagingAdapter(onPosterClick = { openMediaDetailsBSD(it) })
         pagingAdapterAnime = PagingAdapterAnime(onPosterClick = { openAnimeDetailsBSD(it) })
         pagingAdapterTvShow = PagingAdapterTvShow(onTvClick = { openAnimeDetailsBSD(it) })
+        setRecyclerView()
+        binding.searchView.setOnClickListener { openSearch() }
 
         if (checkForInternet(requireContext())) {
+
         } else {
             onSNACK(requireView())
-            binding.lottieLayout.visibility = View.VISIBLE
+            binding.lottieLayout.isVisible = true
             binding.retry.setOnClickListener {
                 quoteviewModel.retry()
                 pagingAdapter.retry()
@@ -88,12 +91,9 @@ class MainFragment : Fragment() {
             }
         }
         quoteviewModel.liveMovies.observe(viewLifecycleOwner) { response ->
-            Log.d("Rohit", "retry: ")
             when (response) {
-                is Response.Success -> {
-                    response.data?.let { setLiveData(it) }
-                }
-                is Response.Error -> {}
+                is Response.Success -> { response.data?.let { setLiveData(it) } }
+                is Response.Error -> { }
                 is Response.Loading -> {}
             }
         }
@@ -106,37 +106,31 @@ class MainFragment : Fragment() {
                 binding.appBarLayout.setBackgroundColor(color)
             }
         }
-        quoteviewModel.pagingList.observe(viewLifecycleOwner) {
-            pagingAdapter.submitData(lifecycle, it)
-            binding.popularRv.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-            binding.popularRv.adapter = pagingAdapter.withLoadStateHeaderAndFooter(
-                header = PagingStateAdapter { pagingAdapter.retry() },
-                footer = PagingStateAdapter { pagingAdapter.retry() }
-            )
-        }
-        quoteviewModel.pagingTvList.observe(viewLifecycleOwner) {
-            pagingAdapterTvShow.submitData(lifecycle, it)
-            binding.tvRv.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-            binding.tvRv.adapter =  pagingAdapterTvShow.withLoadStateHeaderAndFooter(
-                header = PagingStateAdapter { pagingAdapterTvShow.retry() },
-                footer = PagingStateAdapter { pagingAdapterTvShow.retry() }
-            )
-        }
-        quoteviewModel.pagingAnimeList.observe(viewLifecycleOwner) {
-            pagingAdapterAnime.submitData(lifecycle, it)
-            binding.animeRv.layoutManager =
-                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-            binding.animeRv.adapter = pagingAdapterAnime.withLoadStateHeaderAndFooter(
-                header = PagingStateAdapter { pagingAdapterAnime.retry() },
-                footer = PagingStateAdapter { pagingAdapterAnime.retry() }
-            )
-        }
+        quoteviewModel.pagingList.observe(viewLifecycleOwner) { pagingAdapter.submitData(lifecycle, it) }
+        quoteviewModel.pagingTvList.observe(viewLifecycleOwner) { pagingAdapterTvShow.submitData(lifecycle, it) }
+        quoteviewModel.pagingAnimeList.observe(viewLifecycleOwner) { pagingAdapterAnime.submitData(lifecycle, it) }
+    }
+
+    private fun setRecyclerView() {
+        binding.animeRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.animeRv.adapter = pagingAdapterAnime.withLoadStateHeaderAndFooter(
+            header = PagingStateAdapter { pagingAdapterAnime.retry() },
+            footer = PagingStateAdapter { pagingAdapterAnime.retry() }
+        )
+        binding.tvRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.tvRv.adapter = pagingAdapterTvShow.withLoadStateHeaderAndFooter(
+            header = PagingStateAdapter { pagingAdapterTvShow.retry() },
+            footer = PagingStateAdapter { pagingAdapterTvShow.retry() }
+        )
+        binding.popularRv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.popularRv.adapter = pagingAdapter.withLoadStateHeaderAndFooter(
+            header = PagingStateAdapter { pagingAdapter.retry() },
+            footer = PagingStateAdapter { pagingAdapter.retry() }
+        )
     }
 
     private fun setLiveData(it: PopularList) {
-        binding.lottieLayout.visibility = View.GONE
+        binding.lottieLayout.isVisible = false
         for (item in it.results) {
             imageList.add(
                 SlideModel(
@@ -167,6 +161,12 @@ class MainFragment : Fragment() {
             MainFragmentDirections.actionMainFragmentToDetailFragment(null, it)
         findNavController().navigate(action)
 
+    }
+
+    private fun openSearch() {
+        val action: NavDirections =
+            MainFragmentDirections.actionMainFragmentToSearchFragment2()
+        findNavController().navigate(action)
     }
 
     private fun changeAppBarAlpha(color: Int, fraction: Double): Int {

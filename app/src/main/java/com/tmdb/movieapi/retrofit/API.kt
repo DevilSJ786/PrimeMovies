@@ -28,14 +28,12 @@ interface API {
     suspend fun getAnime(
         @Query("with_genres") genres: String = "16",
         @Query("sort_by") sortBy: String? = "popularity.desc",
-        @Query("first_air_date.gte") firstAirDateGreaterThan: String = "2010-01-01",
+//        @Query("first_air_date.gte") firstAirDateGreaterThan: String = "2010-01-01",
         @Query("page") page: Int = 1,
         @Query("language") lang: String? = "en-US",
         @Query("with_original_language") origLang: String = "en",
         @Query("include_null_first_air_dates") include: Boolean = false
     ): Response<Anime>
-
-
 
     @GET("3/movie/now_playing?api_key=473910cbc3db65a9f6898e311f96c47b")
     suspend fun getLiveMovies(
@@ -66,4 +64,19 @@ interface API {
         @Query("language") lang: String? = "en-US"
     ): Response<CastList>
 
+    @GET("3/search/movie?api_key=473910cbc3db65a9f6898e311f96c47b")
+    suspend fun fetchMovieSearchedResults(
+        @Query("language") lang: String? = "en-US",
+        @Query("page") page: Int = 1,
+        @Query("include_adult") includeAdult: Boolean = false,
+        @Query("query") searchQuery: String
+    ): Response<PopularList>
+
+    @GET("3/search/tv?api_key=473910cbc3db65a9f6898e311f96c47b")
+    suspend fun fetchTvSearchedResults(
+        @Query("language") lang: String? = "en-US",
+        @Query("page") page: Int = 1,
+        @Query("include_adult") includeAdult: Boolean = false,
+        @Query("query") searchQuery: String
+    ): Response<Anime>
 }

@@ -1,6 +1,5 @@
 package com.tmdb.movieapi.paging
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -23,7 +22,6 @@ class PagingAdapterTvShow( private var onTvClick: (movieResult: AnimeDetail) -> 
         if (item != null) {
             holder.binding.imageView.setOnClickListener {
                 onTvClick(item)
-                Log.d("Raju", "onBindViewHolderTv: "+item.id)
             }
             holder.binding.ratingText.text= item.vote_average.toString()
             holder.binding.imageView.load(TMDB_POSTER_IMAGE_BASE_URL_W342.plus(item.poster_path)){

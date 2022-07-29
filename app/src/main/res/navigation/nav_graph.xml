@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_searchFragment2"
+            app:destination="@id/searchFragment" />
     </fragment>
     <dialog
         android:id="@+id/detailFragment"
@@ -48,6 +51,15 @@
             android:name="Anime"
             app:argType="com.tmdb.movieapi.models.AnimeDetail"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.tmdb.movieapi.fragment.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
 </navigation>

@@ -10,4 +10,6 @@
     <string name="jurssic_world_dominion">Jurssic world dominion</string>
     <string name="cast_detail">Cast Detail</string>
     <string name="retry">Retry</string>
+    <string name="tvshow">TvShow</string>
+    <string name="movie">Movie</string>
 </resources>

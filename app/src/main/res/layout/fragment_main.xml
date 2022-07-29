@@ -32,7 +32,7 @@
             <TextView
                 android:id="@+id/tv_shows_text"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
@@ -40,8 +40,14 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/app_name"
                 android:fontFamily="@font/chrusty"
-                android:textAlignment="textStart"
+                android:gravity="center_vertical"
                 android:textColor="@color/text_primary" />
+            <ImageView
+                android:id="@+id/search_view"
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_menu_search" />
 
         </LinearLayout>
 
@@ -94,7 +100,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popular_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="@dimen/_160sdp" />
 
             <TextView
                 android:fontFamily="@font/chrusty"
@@ -109,7 +115,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/tv_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="@dimen/_160sdp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -124,7 +130,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/anime_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="@dimen/_160sdp" />
 
 
         </LinearLayout>

@@ -25,6 +25,33 @@ class Repository @Inject constructor(private val api: API) {
     private val castLiveData = MutableLiveData<Response<CastList>>()
     val castList: LiveData<Response<CastList>>
         get() = castLiveData
+    private val searchMovieLiveData = MutableLiveData<Response<PopularList>>()
+    val searchMoviesList: LiveData<Response<PopularList>>
+        get() = searchMovieLiveData
+    private val searchTvLiveData = MutableLiveData<Response<Anime>>()
+    val searchTvList: LiveData<Response<Anime>>
+        get() = searchTvLiveData
+
+    suspend fun getTvSearch(searchQuery:String){
+        try {
+            val result = api.fetchTvSearchedResults(searchQuery=searchQuery)
+            if (result.body() != null) {
+                searchTvLiveData.postValue(Response.Success(result.body()!!))
+            }
+        }catch (e:Exception){
+            searchTvLiveData.postValue(Response.Error(e.message.toString()))
+        }
+    }
+    suspend fun getMovieSearch(searchQuery:String){
+        try {
+            val result = api.fetchMovieSearchedResults(searchQuery=searchQuery)
+            if (result.body() != null) {
+                searchMovieLiveData.postValue(Response.Success(result.body()!!))
+            }
+        }catch (e:Exception){
+            searchMovieLiveData.postValue(Response.Error(e.message.toString()))
+        }
+    }
 
     suspend fun getLiveList() {
         try {

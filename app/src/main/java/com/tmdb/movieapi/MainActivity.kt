@@ -9,8 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-//    lateinit var quoteViewModel: QuoteViewModel
     private lateinit var binding: ActivityMainBinding
     lateinit var imageLoader: ImageLoader
     lateinit var imageRequestBuilder: ImageRequest.Builder
