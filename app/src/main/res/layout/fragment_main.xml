@@ -23,17 +23,11 @@
             android:paddingHorizontal="@dimen/_8sdp"
             app:layout_scrollFlags="noScroll">
 
-            <ImageView
-                android:layout_width="@dimen/_38sdp"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_launcher_foreground" />
-
             <TextView
                 android:id="@+id/tv_shows_text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:paddingTop="@dimen/_4sdp"
